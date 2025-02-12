@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+  - Key0
+  - Key1
+  - Key2
+  - Key3
   layers:
   - Default
   - TransparentFX

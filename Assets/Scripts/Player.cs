@@ -1,9 +1,10 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("Script Comms")]
     public AudioManager AM;
@@ -23,6 +24,15 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 0.2f;
     private float nextFireTime = 0f;
+
+    [Header("Progression")]
+    public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
+
+    void Start()
+    {
+        keyCount = PlayerPrefs.GetInt("KeyCount");
+        AM.PlayLevelMusic();
+    }
 
     void Update()
     {
@@ -80,5 +90,23 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    #endregion
+
+    #region Progression
+
+
+
+
+
+    #endregion
+
+    #region Collisions
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       Debug.Log(collision.tag);
+
+    }
+
     #endregion
 }
