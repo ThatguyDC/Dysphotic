@@ -4020,6 +4020,14 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 384176313089859340, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
+      propertyPath: acceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 384176313089859340, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
+      propertyPath: deceleration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5253967761024589811, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
