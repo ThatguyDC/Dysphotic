@@ -103,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5ae49995c72aa428c73d21db216efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 25
+  Health: 1
   isDead: 0
   xpAmt: 3
   dmgTaken: 0
   player: {fileID: 0}
-  enemySpeed: 1
-  distanceBetween: 3
+  enemySpeed: 6
+  distanceBetween: 2
 --- !u!58 &6042565547592934167
 CircleCollider2D:
   m_ObjectHideFlags: 0

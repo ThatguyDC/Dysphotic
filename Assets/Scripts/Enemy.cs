@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-      //set starting health/dmg values  
+        //set starting health/dmg values  
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

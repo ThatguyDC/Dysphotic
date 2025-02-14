@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 {
     [Header("Script Comms")]
     public AudioManager AM;
+    public CircularSpawner2D FishSummoner;
+    public Wave WaveSummoner;
 
     [Header("Player Info")]
     [SerializeField] private AudioSource PlayerAudioSrc;
@@ -25,6 +27,11 @@ public class Player : MonoBehaviour
     public float fireRate = 0.2f;
     private float nextFireTime = 0f;
 
+    [Header("Abilities")]
+
+    //Wave
+    public GameObject WaveObject;
+
     [Header("Progression")]
     public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
 
@@ -39,6 +46,8 @@ public class Player : MonoBehaviour
         Move();
         Shoot();
         Rotate();
+        FishSummon();
+        WaveSummon();
     }
 
     void FixedUpdate()
@@ -88,6 +97,24 @@ public class Player : MonoBehaviour
             AM.PlayShootSound();
 
 
+        }
+    }
+
+    void FishSummon()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            FishSummoner.SpawnFish();
+        }
+            
+    }
+
+    void WaveSummon()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            WaveSummoner.gameObject.SetActive(true);
+            StartCoroutine(WaveSummoner.SpawnWave());
         }
     }
     #endregion
