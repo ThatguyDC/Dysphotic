@@ -4,6 +4,13 @@ using UnityEngine.UI;
 public class uiManager : MonoBehaviour
 {
 
+    [Header("Abilities")]
+    
+    //Objs
+
+    //Values
+
+
     [Header("XP Bar")]
 
     //Objs
@@ -23,7 +30,7 @@ public class uiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateXPBar();  
     }
 
     #region XP Bar
@@ -59,5 +66,11 @@ public class uiManager : MonoBehaviour
         Mathf.RoundToInt(currentXP); //round currentXP to int
         XPCounter.text = currentXP.ToString() + "/100"; // Update the TextMeshPro text
     }
+    #endregion
+
+    #region Abilities
+
+
+
     #endregion
 }

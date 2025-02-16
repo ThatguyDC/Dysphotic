@@ -103,9 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5ae49995c72aa428c73d21db216efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiScript: {fileID: 1596956242935783164, guid: 5d2b050cb38675a4880fe07eb1b3c887, type: 3}
+  AM: {fileID: 5044754692492273724, guid: 9a82c14d90f9f944a828105248f414ff, type: 3}
+  ESS: {fileID: 719012446335194611, guid: e47a1b3adc07b24408486eb03f4305fd, type: 3}
   Health: 1
   isDead: 0
-  xpAmt: 3
+  xpAmt: 1
   dmgTaken: 0
   player: {fileID: 0}
   enemySpeed: 6

@@ -8,7 +8,9 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Enemy : MonoBehaviour
 {
     [Header("Script Comms")]
-    private uiManager uiScript;
+    public uiManager uiScript;
+    public AudioManager AM;
+    public EnemySpawnSystem ESS;
 
 
     [Header("Enemy Info")]
@@ -31,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        //set starting health/dmg values  
+        //set starting values  
         player = GameObject.FindWithTag("Player");
     }
 
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDie()
     {
+        uiScript.IncreaseXP(1f); //add XP to the meter
 
         if (Health <= minHealth)
         {
@@ -75,14 +78,9 @@ public class Enemy : MonoBehaviour
     private void TakeDamage()
     {
         Health -= dmgTaken;
-        Debug.Log(dmgTaken);
-
     }
 
-    private void GrantXP()
-    {
-        uiScript.currentXP += xpAmt;
-    }
+    
 
     public void ResetHealth()
     {

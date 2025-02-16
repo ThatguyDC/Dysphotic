@@ -50,6 +50,10 @@ MonoBehaviour:
   - {fileID: 725140707537913202, guid: b4422da8a8e0e1b4fb3597ea2ab5599f, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  xpTable:
+  - 1
+  - 2
+  - 4
   playerRef: {fileID: 0}
   spawnInterval: 0.4
   level: 1

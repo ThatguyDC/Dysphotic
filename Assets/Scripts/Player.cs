@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [Header("Script Comms")]
     public AudioManager AM;
-    public CircularSpawner2D FishSummoner;
+    public FishSummon FishSummoner;
     public Wave WaveSummoner;
 
     [Header("Player Info")]
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     {
         keyCount = PlayerPrefs.GetInt("KeyCount");
         AM.PlayLevelMusic();
+        AM.PlayOceanMusic();
     }
 
     void Update()
@@ -99,16 +100,16 @@ public class Player : MonoBehaviour
 
         }
     }
-
+    //Summon 1
     void FishSummon()
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            FishSummoner.SpawnFish();
+            FishSummoner.TrySpawn(); //
         }
             
     }
-
+    //Summon 2
     void WaveSummon()
     {
         if (Input.GetKey(KeyCode.E))
@@ -117,6 +118,18 @@ public class Player : MonoBehaviour
             StartCoroutine(WaveSummoner.SpawnWave());
         }
     }
+    //Summon 3
+    /*
+    void WaveSummon()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            WaveSummoner.gameObject.SetActive(true);
+            StartCoroutine(WaveSummoner.SpawnWave());
+        }
+    }
+    */
+
     #endregion
 
     #region Progression
@@ -131,7 +144,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       Debug.Log(collision.tag);
+       //Debug.Log(collision.tag);
 
     }
 

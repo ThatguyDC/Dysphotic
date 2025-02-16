@@ -7,6 +7,8 @@ public class EnemySpawnSystem : MonoBehaviour
     [SerializeField] private float maxSpawnDistance = 30.0f;
 
     [SerializeField] public GameObject[] enemyTable;
+    [SerializeField] public float[] xpTable;
+
     [SerializeField] private GameObject playerRef;
     [SerializeField] private float spawnInterval = 3f;
 
