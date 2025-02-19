@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787150809497229854}
   - component: {fileID: 3501753235734666098}
+  - component: {fileID: 4175233323805399408}
   m_Layer: 0
   m_Name: FishMinion
   m_TagString: Untagged
@@ -87,3 +88,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4175233323805399408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116877754214432316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f80abe37be32c54fb97c06733f32738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
+  speed: 5

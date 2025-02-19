@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public uiManager uiScript;
     public AudioManager AM;
     public EnemySpawnSystem ESS;
-
+    public Player player;
 
     [Header("Enemy Info")]
     public float Health = 100f; //total health remaining
@@ -22,10 +22,12 @@ public class Enemy : MonoBehaviour
 
     [Header("Combat")]
     public float dmgTaken; //last value of health removed
-    private float dmgToPlayer = 0f;
+    public float dmgToPlayer = 0f;
+    public float attackRate = 1f; // How often the enemy can attack
+    private float nextAttackTime = 0f; //Incremented by Time.time + attackRate to allow next attack
 
     [Header("Ai Params")]
-    public GameObject player;
+    public GameObject playerObj;
     public float enemySpeed;
     private float enemyDistance;
     public float distanceBetween;
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         //set starting values  
-        player = GameObject.FindWithTag("Player");
+        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -46,9 +48,9 @@ public class Enemy : MonoBehaviour
 
     private void ChasePlayer()
     {
-        enemyDistance = Vector2.Distance(transform.position, player.transform.position);
+        enemyDistance = Vector2.Distance(transform.position, playerObj.transform.position);
 
-        Vector2 direction = player.transform.position - transform.position;
+        Vector2 direction = playerObj.transform.position - transform.position;
 
         direction.Normalize();
 
@@ -58,11 +60,13 @@ public class Enemy : MonoBehaviour
 
         if (enemyDistance > distanceBetween)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, playerObj.transform.position, enemySpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
 
     }
+
+    
 
     public void EnemyDie()
     {
@@ -80,7 +84,13 @@ public class Enemy : MonoBehaviour
         Health -= dmgTaken;
     }
 
-    
+    void DamagePlayer() //called in collision after attack timer cycle
+    {
+        player.playerHealth -= dmgToPlayer;
+        
+    }
+
+
 
     public void ResetHealth()
     {
@@ -102,14 +112,16 @@ public class Enemy : MonoBehaviour
             {
                 // Assign the damage value to the bullet
                 dmgTaken = bullet.damage;
-
-                // Call the TakeDamage method
                 TakeDamage();
+            }
+        }
+
+        if (col.gameObject.CompareTag("pDmgVolume") && Time.time >= nextAttackTime) //Once the attack cooldown cycles, dmg player and reset timer
+        {
+                DamagePlayer();
+                nextAttackTime = Time.time + attackRate;
             }
         }
     }
 
     #endregion
-
-
-}

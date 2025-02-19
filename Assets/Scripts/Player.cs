@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public FishSummon FishSummoner;
     public Wave WaveSummoner;
 
-    [Header("Player Info")]
+    [Header("Player Audio")]
     [SerializeField] private AudioSource PlayerAudioSrc;
 
     [Header("Movement")]
@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public float deceleration = 5f;    // How fast the player slows down
     private Vector2 velocity;          // Stores the current movement speed
     private Vector2 movement;
+
+    [Header("Combat")]
+    public float playerHealth;
 
     [Header("Shooting")]
     public GameObject bulletPrefab;
