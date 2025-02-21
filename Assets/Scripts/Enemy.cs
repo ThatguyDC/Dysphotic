@@ -43,7 +43,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         ChasePlayer();
-        EnemyDie(); 
     }
 
     private void ChasePlayer()
@@ -70,18 +69,23 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDie()
     {
-        uiScript.IncreaseXP(1f); //add XP to the meter
-
-        if (Health <= minHealth)
+        if (!isDead) // Ensure XP is only added once
         {
             isDead = true;
-            GameObject.Destroy(gameObject); //sewer slide
+            uiScript.IncreaseXP(xpAmt); // Transfer XP correctly
+            player.killCount += 1;
+            Destroy(gameObject); // Destroy enemy after XP is granted
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage(float dmg)
     {
+        dmgTaken = dmg;
         Health -= dmgTaken;
+        if (Health <= minHealth && !isDead) // Ensure XP is only given once
+        {
+            EnemyDie();
+        }
     }
 
     void DamagePlayer() //called in collision after attack timer cycle
@@ -112,7 +116,7 @@ public class Enemy : MonoBehaviour
             {
                 // Assign the damage value to the bullet
                 dmgTaken = bullet.damage;
-                TakeDamage();
+                TakeDamage(dmgTaken);
             }
         }
 

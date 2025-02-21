@@ -36,10 +36,6 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Enemy") 
-        {
-            Debug.Log("hit");
-        }
         if ((collisionLayers & (1 << col.gameObject.layer)) != 0)
         {
             Destroy(gameObject);

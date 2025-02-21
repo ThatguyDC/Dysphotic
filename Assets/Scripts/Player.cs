@@ -36,8 +36,11 @@ public class Player : MonoBehaviour
     public GameObject WaveObject;
 
     [Header("Progression")]
-    public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
 
+    public float gameTime = 0f;
+
+    public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
+    public int killCount = 0; //amt of enemies killed by player and their abilities
     void Start()
     {
         keyCount = PlayerPrefs.GetInt("KeyCount");
@@ -108,7 +111,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            FishSummoner.TrySpawn(); //
+            FishSummoner.TrySpawn(); 
         }
             
     }

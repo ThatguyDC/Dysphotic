@@ -3,12 +3,23 @@ using UnityEngine;
 using UnityEngine.UI;
 public class uiManager : MonoBehaviour
 {
+    [Header("Script Comms")]
 
-    [Header("Abilities")]
-    
+    public Player player;
+
+
+    [Header("HUD and Values")]
+
     //Objs
+    public TMP_Text gameTimer; //how long remains to complete the current level
+    public TMP_Text killCounter; //how many kills the player has recorded
+
 
     //Values
+    // public float[] levelTimes; //values of each level's beginning timer
+    public float timeLeft = 120;
+
+
 
 
     [Header("XP Bar")]
@@ -30,8 +41,46 @@ public class uiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateXPBar();  
+        //Debug.Log(currentXP);
+        UpdateXPBar();
+        UpdateKills();
+        UpdateClock();
     }
+
+    #region HUD
+
+    private void UpdateKills()
+    {
+        killCounter.text = "Kills: " + player.killCount; // Update text dynamically
+
+    }
+
+    void UpdateClock()
+    {
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            UpdateTime(timeLeft);
+        }
+    }
+
+    void UpdateTime(float currentTime)
+    {
+
+        // Convert the time to a readable format (hours, minutes, seconds, and milliseconds)
+        int minutes = Mathf.FloorToInt((timeLeft % 3600F) / 60F);
+        int seconds = Mathf.FloorToInt(timeLeft % 60F);
+
+        // Format the time into a string
+        string formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        gameTimer.text = formattedTime;
+
+    }
+
+
+
+    #endregion
 
     #region XP Bar
 
@@ -40,10 +89,12 @@ public class uiManager : MonoBehaviour
 
     public void IncreaseXP(float amount)
     {
+        Debug.Log(currentXP);
         currentXP += amount;
+        Debug.Log(currentXP);
 
         // Stay within set range of 0-Max
-        currentXP = Mathf.Clamp(currentXP, 0, maxXP);
+        //currentXP = Mathf.Clamp(currentXP, 0, maxXP);
     }
 
     public void DecreaseXP(float amount)
@@ -55,7 +106,7 @@ public class uiManager : MonoBehaviour
     }
 
     // Function to update the XP Bar UI
-    private void UpdateXPBar()
+    public void UpdateXPBar()
     {
         // Calculate the fill amount based on currentXP and maxXP
         float fillAmount = currentXP / maxXP;

@@ -4,9 +4,9 @@ public class FishMinion : MonoBehaviour
 {
     public string targetTag = "Enemy"; // Tag to track
     public float speed = 5f; // Speed of tracking
-    public float damage = 1f; //how much dmg to deal to its target
+    public float fishDamage = 1f; //how much dmg to deal to its target
     private Transform target; // The nearest target to track with the specified tag
-
+    private GameObject targetObj; //enemy object that's targeted
     void Update()
     {
         FindNearestTarget();
@@ -35,6 +35,7 @@ public class FishMinion : MonoBehaviour
         if (nearestTarget != null)
         {
             target = nearestTarget.transform;
+            targetObj = nearestTarget;
         }
     }
 
@@ -51,5 +52,26 @@ public class FishMinion : MonoBehaviour
     }
 
     //When colliding with an enemy tag, check the target's health and decrease it by dmgAmt;
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag(targetTag)) // Ensure it only affects the correct target
+        {
+            Debug.Log("fish collision");
 
+            Enemy enemy = col.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                Debug.Log($"Damaging enemy: {col.name} for {fishDamage} damage.");
+                enemy.TakeDamage(fishDamage);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Empty");
+            }
+        }
+    }
+
+    
 }

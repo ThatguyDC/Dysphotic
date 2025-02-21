@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 9049b639f4df40c48aa94de2d82ed4a1
+guid: def5509a3880dd244849f55596f65f73
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2823381148369930947
-    second: crabEnemy_0
-  - first:
-      213: -4664038984392961129
-    second: crabEnemy_1
-  - first:
-      213: -161142776243385525
-    second: crabEnemy_2
-  - first:
-      213: -1393178842328459139
-    second: crabEnemy_3
+      213: -150712821518897685
+    second: blueBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,79 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crabEnemy_0
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 385
-        width: 29
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cacf1e023aae2720800000000000000
-      internalID: 2823381148369930947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crabEnemy_1
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 401
-        width: 27
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7931fac3141064fb0800000000000000
-      internalID: -4664038984392961129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crabEnemy_2
-      rect:
-        serializedVersion: 2
-        x: 242
-        y: 381
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b4b84efaf7183cdf0800000000000000
-      internalID: -161142776243385525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crabEnemy_3
+      name: blueBG_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 608
-        height: 377
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d781c6a693f6aace0800000000000000
-      internalID: -1393178842328459139
+      spriteID: bede442cc7f88edf0800000000000000
+      internalID: -150712821518897685
       vertices: []
       indices: 
       edges: []
@@ -222,11 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      crabEnemy_0: 2823381148369930947
-      crabEnemy_1: -4664038984392961129
-      crabEnemy_2: -161142776243385525
-      crabEnemy_3: -1393178842328459139
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
