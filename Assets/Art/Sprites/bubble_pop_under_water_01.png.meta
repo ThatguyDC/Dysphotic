@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2d912652cdbd2c34a84901ad3ccf5aa1
+guid: 7b7f71d1c9e2b7c429e1bc8edb2ff83b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9166923089729728887
-    second: shelf3_bg_0
+      213: -6024905887847800071
+    second: bubble_pop_under_water_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shelf3_bg_0
+      name: bubble_pop_under_water_01_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 13
+        y: 15
+        width: 372
+        height: 374
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 98e4551b40c88c080800000000000000
-      internalID: -9166923089729728887
+      spriteID: 35f665c96861541408b3f8da875fb096
+      internalID: -1171084895
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e7341374f3cf9f14eb3652597729d455
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shelf3_bg_0: -9166923089729728887
+      bubble_pop_under_water_01_0: -1171084895
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

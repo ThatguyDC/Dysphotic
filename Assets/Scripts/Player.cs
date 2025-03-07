@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     [Header("Progression")]
 
     public float gameTime = 0f;
+    public int killThreshold = 100;
 
     public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
     public int killCount = 0; //amt of enemies killed by player and their abilities
@@ -173,7 +174,7 @@ public class Player : MonoBehaviour
 
     void CheckLevelState()
     {
-        if (UM.timeLeft <= 1 || killCount > 1)
+        if (UM.timeLeft <= 1 || killCount > killThreshold) //spawns the amulet so player can progress
         {
         Amulet.SetActive(true);
         }

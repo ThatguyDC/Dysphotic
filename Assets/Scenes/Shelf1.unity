@@ -938,7 +938,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1596956242935783164, guid: 5d2b050cb38675a4880fe07eb1b3c887, type: 3}
       propertyPath: maxXP
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1596956242935783164, guid: 5d2b050cb38675a4880fe07eb1b3c887, type: 3}
       propertyPath: player

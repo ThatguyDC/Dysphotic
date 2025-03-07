@@ -1,16 +1,35 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void LoadMainMenu()
     {
-        
+        SceneManager.LoadScene("Main Menu");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadShelf1()
     {
-        
+        SceneManager.LoadScene("Shelf1");
+    }
+
+    public void LoadShelf2()
+    {
+        SceneManager.LoadScene("Shelf2");
+    }
+
+    public void LoadShelf3()
+    {
+        SceneManager.LoadScene("Shelf3");
+    }
+
+    public void LoadHadalEclipse()
+    {
+        SceneManager.LoadScene("Hadal Eclipse");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

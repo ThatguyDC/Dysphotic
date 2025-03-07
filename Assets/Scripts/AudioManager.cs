@@ -4,12 +4,19 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Audio Sources")]
     [SerializeField] public AudioSource playerAudio;
+    [SerializeField] public AudioSource menuAudio;
+
+
     [Header("SFX")]
     [SerializeField] public AudioClip ShootSound;
     [SerializeField] public AudioClip KeySound;
     [SerializeField] public AudioClip PickupBGSound;
     [SerializeField] public AudioClip UnderwaterSound;
     [SerializeField] public AudioClip EnemyDeadSound;
+
+    //UI SFX
+    [SerializeField] public AudioClip ButtonClick;
+
 
     [Header("Music")]
     [SerializeField] public AudioClip [] LevelMusic; //Used to assign music based on stage/level
@@ -33,6 +40,8 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    //Music
+
     public void PlayLevelMusic()
     {
         playerAudio.PlayOneShot(LevelMusic[0]);
@@ -42,6 +51,9 @@ public class AudioManager : MonoBehaviour
         playerAudio.PlayOneShot(UnderwaterSound);
 
     }
+
+
+    //SFX
     public void PlayShootSound()
     {
         playerAudio.PlayOneShot(ShootSound);
@@ -59,4 +71,11 @@ public class AudioManager : MonoBehaviour
     {
         playerAudio.PlayOneShot(PickupBGSound);
     }
+
+    //UI SFX
+    public void PlayClickSound()
+    {
+        menuAudio.PlayOneShot(ButtonClick);
+    }
+
 }
