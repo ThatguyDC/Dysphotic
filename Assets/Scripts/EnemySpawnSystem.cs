@@ -3,6 +3,10 @@ using System.Collections;
 
 public class EnemySpawnSystem : MonoBehaviour
 {
+
+    [Header("Script Comms")]
+    private uiManager UM;
+
     [SerializeField] private float minSpawnDistance = 20.0f;
     [SerializeField] private float maxSpawnDistance = 30.0f;
 
@@ -20,13 +24,14 @@ public class EnemySpawnSystem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UM = GameObject.FindFirstObjectByType<uiManager>();
         Instantiate(enemyTable[0], new Vector3(playerRef.transform.position.x, playerRef.transform.position.y + minSpawnDistance, playerRef.transform.position.z), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpawning && canSpawn)
+        if (UM.timeLeft >= 1 && isSpawning && canSpawn)
         {
             StartCoroutine("SpawnEnemy");
         }

@@ -109,7 +109,7 @@ MonoBehaviour:
   isDead: 0
   xpAmt: 1
   dmgTaken: 0
-  dmgToPlayer: 0
+  dmgToPlayer: 2
   attackRate: 1
   playerObj: {fileID: 189588217230801685, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
   enemySpeed: 6

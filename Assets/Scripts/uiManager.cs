@@ -57,7 +57,7 @@ public class uiManager : MonoBehaviour
 
     void UpdateClock()
     {
-        if (timeLeft > 0)
+        if (timeLeft >= 1)
         {
             timeLeft -= Time.deltaTime;
             UpdateTime(timeLeft);
@@ -89,9 +89,8 @@ public class uiManager : MonoBehaviour
 
     public void IncreaseXP(float amount)
     {
-        Debug.Log(currentXP);
+        //Debug.Log(currentXP);
         currentXP += amount;
-        Debug.Log(currentXP);
 
         // Stay within set range of 0-Max
         //currentXP = Mathf.Clamp(currentXP, 0, maxXP);

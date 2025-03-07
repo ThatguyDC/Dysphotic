@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
@@ -23,8 +24,6 @@ public class Enemy : MonoBehaviour
     [Header("Combat")]
     public float dmgTaken; //last value of health removed
     public float dmgToPlayer = 0f;
-    public float attackRate = 1f; // How often the enemy can attack
-    private float nextAttackTime = 0f; //Incremented by Time.time + attackRate to allow next attack
 
     [Header("Ai Params")]
     public GameObject playerObj;
@@ -37,6 +36,8 @@ public class Enemy : MonoBehaviour
     {
         //set starting values  
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        uiScript = GameObject.FindFirstObjectByType<uiManager>();
+        AM = GameObject.FindFirstObjectByType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -69,11 +70,12 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDie()
     {
-        if (!isDead) // Ensure XP is only added once
+        if (isDead) // Ensure XP is only added once
         {
-            isDead = true;
+            
             uiScript.IncreaseXP(xpAmt); // Transfer XP correctly
-            player.killCount += 1;
+            playerObj.GetComponent<Player>().killCount += 1;
+            AM.PlayEnemyDeathSound();
             Destroy(gameObject); // Destroy enemy after XP is granted
         }
     }
@@ -84,13 +86,22 @@ public class Enemy : MonoBehaviour
         Health -= dmgTaken;
         if (Health <= minHealth && !isDead) // Ensure XP is only given once
         {
+            isDead = true;
             EnemyDie();
         }
     }
 
     void DamagePlayer() //called in collision after attack timer cycle
     {
-        player.playerHealth -= dmgToPlayer;
+        if (playerObj.GetComponent<Player>().playerHealth > 0) //check if player is alive
+        {
+            playerObj.GetComponent<Player>().playerHealth -= dmgToPlayer; //dmg them if true
+            Debug.Log("dmg'd player");
+        }
+        else
+        {
+            //don't bother damaging
+        }
         
     }
 
@@ -120,12 +131,17 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (col.gameObject.CompareTag("pDmgVolume") && Time.time >= nextAttackTime) //Once the attack cooldown cycles, dmg player and reset timer
+        if (col.gameObject.CompareTag("pDmgVolume"))  //&& Time.time >= nextAttackTime) //Once the attack cooldown cycles, dmg player and reset timer
         {
-                DamagePlayer();
-                nextAttackTime = Time.time + attackRate;
-            }
+            DamagePlayer();
         }
+        else
+        {
+
+        }
+    }
+
+
     }
 
     #endregion

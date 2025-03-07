@@ -50,18 +50,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AM: {fileID: 0}
+  UM: {fileID: 1596956242935783164, guid: 5d2b050cb38675a4880fe07eb1b3c887, type: 3}
   FishSummoner: {fileID: 841131454504437030}
   WaveSummoner: {fileID: 0}
   PlayerAudioSrc: {fileID: 3425731216032605865}
   moveSpeed: 7
   acceleration: 20
   deceleration: 2
-  playerHealth: 0
+  playerHealth: 25
   bulletPrefab: {fileID: 5053294479999738618, guid: 2d3aafaa2e010e242835cea60c9fab96, type: 3}
   firePoint: {fileID: 2492368897363043547}
   fireRate: 0.1
   WaveObject: {fileID: 0}
+  gameTime: 0
   keyCount: 0
+  killCount: 0
+  Amulet: {fileID: 0}
 --- !u!82 &3425731216032605865
 AudioSource:
   m_ObjectHideFlags: 0

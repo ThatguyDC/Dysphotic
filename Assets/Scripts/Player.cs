@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     [Header("Script Comms")]
     public AudioManager AM;
+    public uiManager UM;
     public FishSummon FishSummoner;
     public Wave WaveSummoner;
 
@@ -21,8 +22,16 @@ public class Player : MonoBehaviour
     private Vector2 velocity;          // Stores the current movement speed
     private Vector2 movement;
 
+    private Vector2 screenBounds;
+
+    
+
+
     [Header("Combat")]
     public float playerHealth;
+    public float maxPlayerHealth;
+    private float minPlayerHealth = 0;
+
 
     [Header("Shooting")]
     public GameObject bulletPrefab;
@@ -41,20 +50,26 @@ public class Player : MonoBehaviour
 
     public int keyCount = 0; //# of stages the player has cleared. Update this with playerPrefs
     public int killCount = 0; //amt of enemies killed by player and their abilities
+    [SerializeField] private GameObject Amulet;
+
     void Start()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         keyCount = PlayerPrefs.GetInt("KeyCount");
         AM.PlayLevelMusic();
         AM.PlayOceanMusic();
+        UM = GameObject.FindFirstObjectByType<uiManager>();
     }
 
     void Update()
     {
         Move();
-        Shoot();
-        Rotate();
-        FishSummon();
-        WaveSummon();
+        Shoot(); 
+        Rotate(); //rotate the player while moving
+        FishSummon(); //fish minions can be summoned
+        WaveSummon(); //wave ability 
+        CheckLevelState(); // is time up/player dead? 
+        ClampPlayerHealth(); //limits health to upper bounds/zero when dead 
     }
 
     void FixedUpdate()
@@ -64,6 +79,9 @@ public class Player : MonoBehaviour
     }
 
     #region Movement
+
+    
+    
     void Move()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -80,9 +98,17 @@ public class Player : MonoBehaviour
             // Gradually slow down when no input is given
             velocity = Vector2.Lerp(velocity, Vector2.zero, deceleration * Time.deltaTime);
         }
-
+        
         // Apply movement
         transform.position += (Vector3)(velocity * Time.deltaTime);
+
+        float clampedX = Mathf.Clamp(transform.position.x, -screenBounds.x * 2, screenBounds.x * 2);
+        float clampedY = Mathf.Clamp(transform.position.y, -screenBounds.y * 2, screenBounds.y * 2);
+
+        Vector2 pos = transform.position;
+        pos.x = clampedX;
+        pos.y = clampedY;
+        transform.position = pos;
     }
     void Rotate()
     {
@@ -95,6 +121,11 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Combat/Abilities
+
+    void ClampPlayerHealth()
+    {
+        Mathf.Clamp(playerHealth, minPlayerHealth, maxPlayerHealth);
+    }
     void Shoot()
     {
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
@@ -140,6 +171,19 @@ public class Player : MonoBehaviour
 
     #region Progression
 
+    void CheckLevelState()
+    {
+        if (UM.timeLeft <= 1 || killCount > 1)
+        {
+        Amulet.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("didnt hit amulet");
+            //player probably dead
+        }
+        
+    }
 
 
 
@@ -148,11 +192,6 @@ public class Player : MonoBehaviour
 
     #region Collisions
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       //Debug.Log(collision.tag);
-
-    }
 
     #endregion
 }

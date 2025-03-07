@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip PickupBGSound;
     [SerializeField] public AudioClip UnderwaterSound;
     [SerializeField] public AudioClip EnemyDeadSound;
+
     [Header("Music")]
     [SerializeField] public AudioClip [] LevelMusic; //Used to assign music based on stage/level
     [SerializeField] public AudioClip DiscipleMusic;
