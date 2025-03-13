@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         Shoot(); 
         Rotate(); //rotate the player while moving
         FishSummon(); //fish minions can be summoned
-        WaveSummon(); //wave ability 
+        //WaveSummon(); //wave ability 
         CheckLevelState(); // is time up/player dead? 
         ClampPlayerHealth(); //limits health to upper bounds/zero when dead 
     }
@@ -147,6 +147,8 @@ public class Player : MonoBehaviour
         }
             
     }
+
+    /*
     //Summon 2
     void WaveSummon()
     {
@@ -157,7 +159,7 @@ public class Player : MonoBehaviour
         }
     }
     //Summon 3
-    /*
+    
     void WaveSummon()
     {
         if (Input.GetKey(KeyCode.E))

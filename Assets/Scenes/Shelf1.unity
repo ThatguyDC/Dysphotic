@@ -1004,6 +1004,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 384176313089859340, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
+      propertyPath: killThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 384176313089859340, guid: 4ee32b02eac76e84c94923a90e5a9967, type: 3}
       propertyPath: maxPlayerHealth
       value: 25
       objectReference: {fileID: 0}
