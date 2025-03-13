@@ -3,6 +3,39 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    private void Start()
+    {
+        PlayerPrefs.Save();
+
+        PlayerPrefs.SetInt(KeyCount, 0);
+        PlayerPrefs.Save();
+    }
+    private void Update()
+    {
+
+        //Shelf 1 is loaded from main menu
+
+        //Shelf 2 load condition
+        if (PlayerPrefs.KeyCount == 1)
+        {
+            LoadShelf2();
+        }
+
+        //Shelf 3 load condition
+        else if (PlayerPrefs.KeyCount == 2)
+        {
+            LoadShelf3();
+        }
+        else if (PlayerPrefs.KeyCount == 3)
+        {
+            LoadHadalEclipse();
+        }
+
+        else
+        {
+            //Don't load any scenes out of key bounds
+        }
+    }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");

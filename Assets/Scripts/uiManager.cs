@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 public class uiManager : MonoBehaviour
 {
     [Header("Script Comms")]
@@ -13,7 +14,6 @@ public class uiManager : MonoBehaviour
     //Objs
     public TMP_Text gameTimer; //how long remains to complete the current level
     public TMP_Text killCounter; //how many kills the player has recorded
-
 
     //Values
     // public float[] levelTimes; //values of each level's beginning timer
