@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bubble_pop_under_water_05 1_0: -488873340172060092
+      bubble_pop_under_water_05 1_1: -2645337814555481977
+      bubble_pop_under_water_05 1_2: 5469072390324109170
+      bubble_pop_under_water_05 1_3: -2288016925749969182
+      bubble_pop_under_water_05 1_4: -6879447755678164727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
