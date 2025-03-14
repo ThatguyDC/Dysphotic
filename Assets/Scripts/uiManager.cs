@@ -8,6 +8,10 @@ public class uiManager : MonoBehaviour
 
     public Player player;
 
+    [Header("Audio Settings")]
+
+    public AudioMixer MasterMixer;
+    public Slider MasterVolumeSlider;
 
     [Header("HUD and Values")]
 

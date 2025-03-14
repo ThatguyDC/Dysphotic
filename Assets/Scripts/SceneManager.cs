@@ -3,66 +3,88 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private void Start()
+
+    [Header("Script Comms")]
+
+    public Player PlayerScript;
+
+    [Header("Scene Transitions")]
+
+    public Scene scene;
+    [SerializeField] RectTransform fader;
+
+    void Start()
     {
-        PlayerPrefs.Save();
 
-        PlayerPrefs.SetInt(KeyCount, 0);
-        PlayerPrefs.Save();
-    }
-    private void Update()
-    {
-
-        //Shelf 1 is loaded from main menu
-
-        //Shelf 2 load condition
-        if (PlayerPrefs.KeyCount == 1)
+        scene = SceneManager.GetActiveScene();
+        if (scene.name == "Main Menu")
         {
-            LoadShelf2();
-        }
-
-        //Shelf 3 load condition
-        else if (PlayerPrefs.KeyCount == 2)
-        {
-            LoadShelf3();
-        }
-        else if (PlayerPrefs.KeyCount == 3)
-        {
-            LoadHadalEclipse();
+            fader.gameObject.SetActive(true);
+            LeanTween.scale(fader, Vector3.zero, 0);
         }
 
         else
         {
-            //Don't load any scenes out of key bounds
+            fader.gameObject.SetActive(true);
+            LeanTween.scale(fader, Vector3.zero, 1.0f);
+            //LeanTween.scale(fader, new Vector3(1, 1, 1), 1.0f);
         }
     }
+
+
     public void LoadMainMenu()
     {
+        
+        LeanTween.scale(fader, Vector3.zero, 0.5f).setOnComplete(() => {
+            fader.gameObject.SetActive(false);
+        });
         SceneManager.LoadScene("Main Menu");
     }
 
     public void LoadShelf1()
     {
-        SceneManager.LoadScene("Shelf1");
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 1.0f).setOnComplete(() => {
+            SceneManager.LoadScene("Shelf1");
+        });
+        
     }
 
     public void LoadShelf2()
     {
+        fader.gameObject.SetActive(true);
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 0);
+        LeanTween.scale(fader, Vector3.zero, 0.5f).setOnComplete(() => {
+            fader.gameObject.SetActive(false);
+        });
         SceneManager.LoadScene("Shelf2");
     }
 
     public void LoadShelf3()
     {
+        fader.gameObject.SetActive(true);
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 0);
+        LeanTween.scale(fader, Vector3.zero, 0.5f).setOnComplete(() => {
+            fader.gameObject.SetActive(false);
+        });
         SceneManager.LoadScene("Shelf3");
     }
 
     public void LoadHadalEclipse()
     {
+        fader.gameObject.SetActive(true);
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 0);
+        LeanTween.scale(fader, Vector3.zero, 0.5f).setOnComplete(() => {
+            fader.gameObject.SetActive(false);
+        });
         SceneManager.LoadScene("Hadal Eclipse");
     }
 
     public void QuitGame()
     {
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 0);
+        LeanTween.scale(fader, Vector3.zero, 0.5f).setOnComplete(() => {
+            fader.gameObject.SetActive(false);
+        });
         Application.Quit();
     }
 }
